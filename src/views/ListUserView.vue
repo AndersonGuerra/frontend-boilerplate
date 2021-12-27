@@ -2,8 +2,21 @@
   <div>
     <h1>Usuários</h1>
     <ul>
-      <li v-for="(user, index) in users" :key="index">{{ user.name }}</li>
+      <li v-for="(user, index) in users" :key="index">
+        <router-link
+          :to="{
+            name: 'Detalhes do usuário',
+            params: {
+              id: user.id,
+            },
+          }"
+          >{{ user.name }}</router-link
+        >
+      </li>
     </ul>
+    <v-col cols="3">
+      <v-btn color="primary" :to="{ name: 'Menu' }">Voltar para o menu</v-btn>
+    </v-col>
   </div>
 </template>
 <script lang="ts">
@@ -16,10 +29,8 @@ export default defineComponent({
   setup() {
     const users = ref(Array<User>());
     onMounted(async () => {
-      const usersResult = await (await api.get("/users")).data;
-      console.log(usersResult);
+      const usersResult = (await api.get("/users")).data;
       users.value.push(...usersResult);
-      console.log("hum");
     });
     return { users };
   },
