@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Menu</h1>
     <v-row>
       <v-col>
         <v-btn block color="primary" :to="{ name: 'Login' }">Login</v-btn>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import authRoutes from "./auth";
+import userRoutes from "./users";
 import MenuView from "../views/MenuView.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -19,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   },
 ];
 
-routes.push(...authRoutes);
+routes.push(...authRoutes, ...userRoutes);
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
